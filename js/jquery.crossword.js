@@ -193,7 +193,7 @@
 						// while we're in here, add clues to DOM!
 						$('#' + puzz.data[i].orientation).append('<li tabindex="1" data-position="' + i + '">' + puzz.data[i].clue + '</li>'); 
 					}				
-					
+					console.log(entries);
 					// Calculate rows/cols by finding max coords of each entry, then picking the highest
 					for (var i = 0, p = entryCount; i < p; ++i) {
 						for (var x=0; x < entries[i].length; x++) {
