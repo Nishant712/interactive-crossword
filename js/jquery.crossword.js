@@ -99,7 +99,7 @@
 							return false;
 						} else {
 							
-							console.log('input keyup: '+solvedToggle);
+							// console.log('input keyup: '+solvedToggle);
 							
 							puzInit.checkAnswer(e);
 
@@ -195,6 +195,7 @@
 					}				
 					console.log(entries);
 					// Calculate rows/cols by finding max coords of each entry, then picking the highest
+					console.log(entries);
 					for (var i = 0, p = entryCount; i < p; ++i) {
 						for (var x=0; x < entries[i].length; x++) {
 							cols.push(entries[i][x].split(',')[0]);
@@ -298,17 +299,36 @@
 						.get()
 						.join('');
 					
-					//console.log(currVal + " " + valToCheck);
+					console.log(currVal + " " + valToCheck);
 					if(valToCheck === currVal){	
 						$('.active')
 							.addClass('done')
-							.removeClass('active');
+							.removeClass('active')
+							.removeClass('wrong');
 					
 						$('.clues-active').addClass('clue-done');
+						var audio = new Audio('/Users/savinaynarendra/Crossword/audio/jbl_ambiguous.mp3');
+							audio.play();
 
 						solved.push(valToCheck);
 						solvedToggle = true;
 						return;
+					} 
+					else{
+						if (valToCheck.length === currVal.length) {
+
+							$('.active')
+								.addClass('wrong')
+								.removeClass('done')
+								.removeClass('active')
+							
+							var audio = new Audio('/Users/savinaynarendra/Crossword/audio/error.mp3');
+							audio.play();
+
+							// $('.clues-active')
+							// 	.removeClass('clue-done')
+							// 	.addClass('clue-done');
+						}
 					}
 					
 					currOri === 'across' ? nav.nextPrevNav(e, 39) : nav.nextPrevNav(e, 40);
@@ -521,7 +541,7 @@
 							activePosition = classes[0].split('-')[1];						
 						}
 						
-						console.log('getActivePositionFromClassGroup activePosition: '+activePosition);
+						// console.log('getActivePositionFromClassGroup activePosition: '+activePosition);
 						
 				},
 				
