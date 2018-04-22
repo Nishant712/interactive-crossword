@@ -309,7 +309,6 @@
 							.removeClass('wrong');
 					
 						$('.clues-active').addClass('clue-done');
-						
 						$('#audio-success').html('<audio autoplay><source src="audio/jbl_ambiguous.mp3"></audio>');
 
 						solved.push(valToCheck);
