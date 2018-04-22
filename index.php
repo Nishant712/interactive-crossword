@@ -66,6 +66,11 @@
 			font-weight: bold;
 			color: green;
 		}
+
+		input.wrong {
+			font-weight: bold;
+			color: red;
+		}
 		
 		.active,
 		.clues-active {
