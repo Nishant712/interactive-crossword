@@ -104,6 +104,7 @@
 <body>
 	
 <div id="puzzle-wrapper"><!-- crossword puzzle appended here --></div>
-
+<span id="audio-error"></span>
+<span id="audio-success"></span>
 </body>
 </html>	

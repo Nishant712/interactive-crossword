@@ -195,7 +195,6 @@
 					}				
 					console.log(entries);
 					// Calculate rows/cols by finding max coords of each entry, then picking the highest
-					console.log(entries);
 					for (var i = 0, p = entryCount; i < p; ++i) {
 						for (var x=0; x < entries[i].length; x++) {
 							cols.push(entries[i][x].split(',')[0]);
@@ -205,6 +204,9 @@
 
 					rows = Math.max.apply(Math, rows) + "";
 					cols = Math.max.apply(Math, cols) + "";
+					
+					console.log(cols);
+					console.log(rows);
 		
 				},
 				
@@ -307,8 +309,8 @@
 							.removeClass('wrong');
 					
 						$('.clues-active').addClass('clue-done');
-						var audio = new Audio('/Users/savinaynarendra/Crossword/audio/jbl_ambiguous.mp3');
-							audio.play();
+						
+						$('#audio-success').html('<audio autoplay><source src="audio/jbl_ambiguous.mp3"></audio>');
 
 						solved.push(valToCheck);
 						solvedToggle = true;
@@ -322,8 +324,7 @@
 								.removeClass('done')
 								.removeClass('active')
 							
-							var audio = new Audio('/Users/savinaynarendra/Crossword/audio/error.mp3');
-							audio.play();
+							$('#audio-error').html('<audio autoplay><source src="/audio/error.mp3"></audio>');
 
 							// $('.clues-active')
 							// 	.removeClass('clue-done')
