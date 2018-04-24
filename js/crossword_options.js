@@ -8,3 +8,11 @@ function showAnswer() {
         inp_cells[i].style.color = "green";
     }
 }
+
+function resetCrossword() {
+    var inp_cells = document.querySelectorAll("#puzzle-wrapper #puzzle tbody tr td input");
+    for(var i = 0;i < inp_cells.length; i++) {
+        inp_cells[i].value = "";
+        inp_cells[i].style.color = "black";
+    }
+}

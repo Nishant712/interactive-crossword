@@ -129,7 +129,7 @@
 		}
 		
 		.show_answer {
-			margin-left: 37.5%;
+			margin-left: 25%;
 			margin-bottom: 1.5%;
 			/*margin-top: 2.5%;*/
 			display: block;
@@ -165,6 +165,7 @@
 <!--<br>-->
 <div class = "show_answer container">
 	<a href="#" class="btn-3d blue " id="change" onclick="showAnswer()">Show All Answers</a>
+	<a href="#" class="btn-3d blue " id="reset" onclick="resetCrossword()">Reset</a>
 </div>
 <div id="puzzle-wrapper"><!-- crossword puzzle appended here --></div>
 <span id="audio-error"></span>
