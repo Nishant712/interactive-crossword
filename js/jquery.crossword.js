@@ -134,7 +134,7 @@
 						mode = "setting ui";
 						if (solvedToggle) solvedToggle = false;
 
-						console.log('input click: '+solvedToggle);
+						// console.log('input click: '+solvedToggle);
 					
 						nav.updateByEntry(e);
 						e.preventDefault();
@@ -189,7 +189,7 @@
 
 						var currAnswer = puzz.data[i].answer;
 						var ansArray = currAnswer.split('');
-						console.log(currAnswer);
+						// console.log(currAnswer);
 						for (var x=0, j = puzz.data[i].answer.length; x < j; ++x) {
 							entries[i].push(x);
 							answers[i].push(x);
@@ -201,7 +201,7 @@
 						// while we're in here, add clues to DOM!
 						$('#' + puzz.data[i].orientation).append('<li tabindex="1" data-position="' + i + '">' + puzz.data[i].clue + '</li>'); 
 					}				
-					console.log(entries);
+					// console.log(entries);
 					// Calculate rows/cols by finding max coords of each entry, then picking the highest
 					for (var i = 0, p = entryCount; i < p; ++i) {
 						for (var x=0; x < entries[i].length; x++) {
@@ -213,8 +213,8 @@
 					rows = Math.max.apply(Math, rows) + "";
 					cols = Math.max.apply(Math, cols) + "";
 					
-					console.log(cols);
-					console.log(rows);
+					// console.log(cols);
+					// console.log(rows);
 		
 				},
 				
@@ -309,29 +309,33 @@
 						.get()
 						.join('');
 					
-					console.log(currVal + " " + valToCheck);
+					// console.log(currVal + " " + valToCheck);
 					if(valToCheck === currVal){	
-						$('.active')
-							.addClass('done')
-							.removeClass('active')
-							.removeClass('wrong');
+						// $('.active')
+						// 	.addClass('done')
+						// 	.removeClass('active');
+							// .removeClass('wrong');
 					
-						$('.clues-active').addClass('clue-done');
-						$('#audio-success').html('<audio autoplay><source src="audio/jbl_ambiguous.mp3"></audio>');
+						// $('.clues-active').addClass('clue-done');
+						// $('#audio-success').html('<audio autoplay><source src="audio/jbl_ambiguous.mp3"></audio>');
 
 						solved.push(valToCheck);
+						var solved_string = solved.join();
+						console.log(solved_string);
+						sessionStorage.setItem("solved", solved);
+						console.log(solved);
 						solvedToggle = true;
 						return;
 					} 
 					else{
 						if (valToCheck.length === currVal.length) {
 
-							$('.active')
-								.addClass('wrong')
-								.removeClass('done')
-								.removeClass('active')
+							// $('.active')
+							// 	.addClass('wrong')
+							// 	.removeClass('done')
+							// 	.removeClass('active')
 							
-							$('#audio-error').html('<audio autoplay><source src="/audio/error.mp3"></audio>');
+							// $('#audio-error').html('<audio autoplay><source src="/audio/error.mp3"></audio>');
 
 							// $('.clues-active')
 							// 	.removeClass('clue-done')

@@ -5,14 +5,7 @@
 		// Position refers to the numerical order of an entry. Each position can have 
 		// two entries: an across entry and a down entry
 		var puzzleData = [
-			 	{
-					clue: "First letter of greek alphabet",
-					answer: "alpha",
-					position: 1,
-					orientation: "across",
-					startx: 1,
-					starty: 1,
-				},
+			 	
 			 	{
 					clue: "Not a one ___ motor, but a three ___ motor",
 					answer: "phase",
@@ -62,8 +55,8 @@
 					starty: 11
 				},
 				{
-					clue: "C programming language operator",
-					answer: "cysan",
+					clue: "A weapon and also a popular brand for cameras",
+					answer: "canon",
 					position: 17,
 					orientation: "across",
 					startx: 7,
@@ -76,6 +69,14 @@
 					orientation: "down",
 					startx: 1,
 					starty: 1
+				},
+				{
+					clue: "First letter of greek alphabet",
+					answer: "alpha",
+					position: 1,
+					orientation: "across",
+					startx: 1,
+					starty: 1,
 				},
 				{
 					clue: "Generally, if you go over 1kV per cm this happens",

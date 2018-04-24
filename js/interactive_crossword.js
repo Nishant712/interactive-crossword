@@ -48,6 +48,19 @@
 				solvedToggle = false,
 				z = 0,
 				answers = [];
+				
+			var solved_string = sessionStorage.getItem("solved");
+			if (solved_string != null) {
+				var solved1 = solved_string.split(',');
+				solved = solved_string.split(',');
+				console.log(solved1);
+				var valuer = (100 * solved1.length/puzz.data.length).toFixed(2);
+				$('.progress-bar').css('width', valuer+'%').attr('aria-valuenow', valuer);
+				$('div.progress-bar').text(valuer+'%');
+			}
+			
+			
+			
 
 			var puzInit = {
 				
@@ -134,7 +147,7 @@
 						mode = "setting ui";
 						if (solvedToggle) solvedToggle = false;
 
-						console.log('input click: '+solvedToggle);
+				// 		console.log('input click: '+solvedToggle);
 					
 						nav.updateByEntry(e);
 						e.preventDefault();
@@ -199,7 +212,7 @@
 						}
 
 						// while we're in here, add clues to DOM!
-						$('#' + puzz.data[i].orientation).append('<li tabindex="1" data-position="' + i + '">' + puzz.data[i].clue + '</li>'); 
+						$('#' + puzz.data[i].orientation).append('<li data-ans="' + currAnswer + '" tabindex="1" data-position="' + i + '">' + puzz.data[i].clue + '</li>'); 
 					}				
 				// 	console.log(entries);
 					// Calculate rows/cols by finding max coords of each entry, then picking the highest
@@ -226,7 +239,7 @@
 					for (var i=1; i <= rows; ++i) {
 						tbl.push("<tr>");
 							for (var x=1; x <= cols; ++x) {
-								tbl.push('<td data-coords="' + x + ',' + i + '"></td>');		
+								tbl.push('<td data-coords="' + x + ',' + i + '" title="tooltip"></td>');		
 							};
 						tbl.push("</tr>");
 					};
@@ -265,7 +278,7 @@
 							if($(light).empty()){
 								$(light)
 									.addClass('entry-' + (hasOffset ? x - positionOffset : x) + ' position-' + (x-1) )
-									.append('<input data-answer="' + answers[x-1][i] + '" maxlength="1" val="" type="text" tabindex="-1" />');
+									.append('<input onchange="checkAns(this)" data-answer="' + answers[x-1][i] + '" maxlength="1" val="" type="text" tabindex="-1" />');
 							}
 						};
 						
@@ -277,6 +290,11 @@
 						if(!$('.entry-' + i +':eq(0) span').length){
 							$groupedLights.eq(0)
 								.append('<span>' + puzz.data[i].position + '</span>');
+							
+							$('.position-' + i).tooltip({
+								content: '<img src="img/' + puzz.data[i].img + '">',
+               					track:true
+							})
 						}
 					}	
 					
@@ -309,7 +327,7 @@
 						.get()
 						.join('');
 					
-					console.log(currVal + " " + valToCheck);
+				// 	console.log(currVal + " " + valToCheck);
 					if(valToCheck === currVal){	
 						$('.active')
 							.addClass('done')
@@ -318,8 +336,13 @@
 					
 						$('.clues-active').addClass('clue-done');
 						$('#audio-success').html('<audio autoplay><source src="audio/jbl_ambiguous.mp3"></audio>');
+						console.log(solved);
 
 						solved.push(valToCheck);
+						
+						var valuer = (100 * solved.length/puzz.data.length).toFixed(2);
+						$('.progress-bar').css('width', valuer+'%').attr('aria-valuenow', valuer);
+						$('div.progress-bar').text(valuer+'%');
 						solvedToggle = true;
 						return;
 					} 
@@ -575,7 +598,22 @@
 
 				
 			puzInit.init();
-	
+	        var solved_string1 = sessionStorage.getItem("solved");
+	        var clues_ele = document.querySelectorAll("#puzzle-clues ol li");
+	        console.log(clues_ele);
+	        if (solved_string1 != null) {
+				var solved2 = solved_string1.split(',');
+				console.log(solved2);
+				for(var i = 0; i < clues_ele.length; i++) {
+				    for(var j = 0; j < solved2.length; j++) {
+				        if(clues_ele[i].getAttribute("data-ans") == solved2[j]) {
+				            clues_ele[i].classList.add("clue-done");
+				            break;
+				        }
+				    }
+				}
+			}
+	        
 							
 	}
 	

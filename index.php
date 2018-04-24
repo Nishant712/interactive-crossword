@@ -6,10 +6,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Qurossword - A javascript crossword puzzle plugin</title>
+	<title>Interactive Crossword</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="./styles/cool_buttons.css">
+	<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script src="js/jquery.crossword.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/change_view.js"></script>
@@ -22,6 +24,7 @@
 		font: 62.5%/1.3em Helvetica, sans-serif;
 		width: 90.3%;
 		margin: 10px auto;
+		background-color: #ffe6e6;
 	}
 		table { 
 			border-collapse: collapse; 
@@ -65,7 +68,7 @@
 		}
 		
 		input.done {
-			font-weight: bold;
+			/*font-weight: bold;*/
 			color: green;
 		}
 
@@ -76,7 +79,7 @@
 		
 		.active,
 		.clues-active {
-			background-color: #ddd;
+			/*background-color: #ddd;*/
 		}
 		.clue-done {
 			color: #999;
@@ -106,15 +109,30 @@
 			display: block;
 		}
 		
+		.header {
+			font-size: 2em;
+			margin-top: 0;
+			/*color: white;*/
+			text-align: center;
+			text-decoration: underline;
+			/*background-color: #630110;*/
+			margin-bottom: 3.5%;
+			/*height: 100px;*/
+		}
+		
 	</style>
 
 </head>
 
 <body>
-<div class = "change_button">
+<div class="header">
+	<h1>A Crossword</h1>
+</div>
+
+<div id="puzzle-wrapper"><!-- crossword puzzle appended here --></div>
+<div class = "change_button container">
 	<a href="#" class="btn-3d blue " id="change" onclick="checkCrossword()">Check</a>
 </div>
-<div id="puzzle-wrapper"><!-- crossword puzzle appended here --></div>
 <span id="audio-error"></span>
 <span id="audio-success"></span>
 </body>

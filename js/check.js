@@ -15,7 +15,7 @@ $(document).ready(function(){
         var inp = inp_cells[i].getAttribute("data-answer");
         var inp_arr = inp.split(':');
         var inp_ans = inp_arr[1];
-        console.log(inp_ans);
+        // console.log(inp_ans);
         var ansArray = temp[i].split(':');
         inp_cells[i].value = ansArray[1];
         if(inp_cells[i].value == inp_ans) {
@@ -28,3 +28,20 @@ $(document).ready(function(){
     //     $("p").slideToggle();
     // });
 });
+
+// $("#puzzle-wrapper #puzzle tbody tr td input").change(function(){
+//     var inp = this.getAttribute("data-answer");
+//     console.log(inp);
+// });
+
+function checkAns(ele) {
+    // console.log(ele.getAttribute("data-answer"));
+    var inp = ele.getAttribute("data-answer");
+    var inp_arr = inp.split(':');
+    var inp_ans = inp_arr[1];
+    if(ele.value == inp_ans) {
+        ele.style.color = "green";
+    } else {
+        ele.style.color = "red";
+    }
+}
