@@ -15,4 +15,13 @@ function resetCrossword() {
         inp_cells[i].value = "";
         inp_cells[i].style.color = "black";
     }
+    var clues_ele = document.querySelectorAll("#puzzle-clues ol li.clue-done");
+    for(var i = 0; i < clues_ele.length; i++) {
+	    clues_ele[i].classList.remove("clue-done");
+	}
+	
+	var solved1 = [];
+	var valuer = (100 * solved1.length/18).toFixed(2);
+	$('.progress-bar').css('width', valuer+'%').attr('aria-valuenow', valuer);
+	$('div.progress-bar').text(valuer+'%');
 }
